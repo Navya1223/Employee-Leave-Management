@@ -1,0 +1,764 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  HomeScreen:
+    Properties:
+      Fill: =RGBA(255,255,255,1)
+      LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+      OnVisible: |-
+        =Set(
+            varSelectedRequest,
+            First('Leave Request')
+        );
+        Set(
+            varStatusFilter,
+            "All"
+        )
+    Children:
+      - ScreenContainer1:
+          Control: GroupContainer@1.5.0
+          Variant: AutoLayout
+          Properties:
+            Fill: =RGBA(44, 191, 184, 1)
+            Height: =Parent.Height
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =16
+            PaddingBottom: =16
+            PaddingLeft: =16
+            PaddingRight: =16
+            PaddingTop: =16
+            Width: =Parent.Width
+          Children:
+            - HeaderContainer1:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  Fill: =RGBA(247, 181, 181, 1)
+                  FillPortions: =0
+                  Height: =75
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =8
+                  PaddingRight: =8
+                  PaddingTop: =8
+                  RadiusBottomLeft: =8
+                  RadiusBottomRight: =8
+                  RadiusTopLeft: =8
+                  RadiusTopRight: =8
+                Children:
+                  - lblTitle:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Center
+                        BorderColor: =RGBA(0, 0, 0, 0)
+                        BorderThickness: =5
+                        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                        DisabledColor: =RGBA(0, 0, 0, 1)
+                        DisabledFill: =RGBA(247, 181, 181, 1)
+                        Fill: =RGBA(247, 181, 181, 1)
+                        FocusedBorderThickness: =4
+                        Font: =Font.Georgia
+                        FontWeight: =FontWeight.Semibold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Size: =20
+                        Text: ="Employee Leave Management"
+                        Width: =450
+                  - btnNewRequest:
+                      Control: Classic/Button@2.2.0
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Center
+                        BorderColor: =RGBA(255, 255, 255, 1)
+                        BorderThickness: =3
+                        Color: =RGBA(255, 255, 255, 1)
+                        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                        DisabledColor: =RGBA(161, 159, 157, 1)
+                        DisabledFill: =RGBA(242, 242, 241, 0)
+                        Fill: =RGBA(46, 129, 171, 1)
+                        Font: =Font.Georgia
+                        Height: =50
+                        HoverBorderColor: =RGBA(0, 0, 0, 0)
+                        HoverColor: =RGBA(255, 255, 255, 1)
+                        HoverFill: =RGBA(16, 110, 190, 1)
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: |-
+                          =NewForm(frmNewLeaveRequest);
+                          Navigate(
+                              NewRequestScreen,
+                              ScreenTransition.Fade
+                          )
+                        PressedBorderColor: =RGBA(4, 43, 97, 1)
+                        PressedColor: =RGBA(255, 255, 255, 1)
+                        PressedFill: =RGBA(16, 110, 190, 1)
+                        RadiusBottomLeft: =2
+                        RadiusBottomRight: =2
+                        RadiusTopLeft: =2
+                        RadiusTopRight: =2
+                        Text: ="New Leave Request"
+                        Width: =250
+            - MainContainer1:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  Fill: =RGBA(255, 255, 255, 1)
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =12
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  PaddingBottom: =10
+                  PaddingLeft: =10
+                  PaddingRight: =10
+                  PaddingTop: =10
+                  RadiusBottomLeft: =8
+                  RadiusBottomRight: =8
+                  RadiusTopLeft: =8
+                  RadiusTopRight: =8
+                Children:
+                  - conRequestList:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        FillPortions: =2
+                        Height: =Parent.Height
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        PaddingBottom: =8
+                        PaddingLeft: =8
+                        PaddingRight: =8
+                        PaddingTop: =8
+                        Width: =Parent.Width
+                        X: =40
+                        Y: =40
+                      Children:
+                        - conStatusFilters:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              Fill: =RGBA(245, 247, 250, 1)
+                              FillPortions: =0
+                              Height: =55
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutGap: =10
+                              LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              PaddingBottom: =8
+                              PaddingLeft: =6
+                              PaddingRight: =6
+                              PaddingTop: =8
+                              Width: =Parent.Width
+                              X: =40
+                              Y: =40
+                            Children:
+                              - btnAll:
+                                  Control: Classic/Button@2.2.0
+                                  Properties:
+                                    BorderColor: =RGBA(190, 75, 125, 1)
+                                    BorderThickness: =1
+                                    Color: |-
+                                      =If(
+                                          varStatusFilter = "All",
+                                          RGBA(255, 255, 255, 1),
+                                          RGBA(0, 120, 212, 1)
+                                      )
+                                    DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                                    DisabledColor: =RGBA(161, 159, 157, 1)
+                                    DisabledFill: =RGBA(242, 242, 241, 0)
+                                    Fill: |-
+                                      =If(
+                                          varStatusFilter = "All",
+                                          RGBA(190, 75, 125, 1),
+                                          RGBA(250, 225, 237, 1)
+                                      )
+                                    FillPortions: =1
+                                    Font: =Font.'Segoe UI'
+                                    Height: =36
+                                    HoverBorderColor: =RGBA(0, 0, 0, 0)
+                                    HoverColor: =RGBA(255, 255, 255, 1)
+                                    HoverFill: =RGBA(235, 190, 212, 1)
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    OnSelect: =Set(varStatusFilter, "All")
+                                    PaddingBottom: =8
+                                    PaddingLeft: =8
+                                    PaddingRight: =8
+                                    PaddingTop: =8
+                                    PressedBorderColor: =RGBA(0, 69, 120, 1)
+                                    PressedColor: =RGBA(255, 255, 255, 1)
+                                    PressedFill: =RGBA(165, 55, 105, 1)
+                                    RadiusBottomLeft: =18
+                                    RadiusBottomRight: =18
+                                    RadiusTopLeft: =18
+                                    RadiusTopRight: =18
+                                    Text: ="All"
+                              - btnPending:
+                                  Control: Classic/Button@2.2.0
+                                  Properties:
+                                    BorderColor: =
+                                    BorderThickness: =1
+                                    Color: |-
+                                      =If(
+                                          varStatusFilter = "Pending",
+                                          RGBA(255, 255, 255, 1),
+                                          RGBA(145, 90, 0, 1)
+                                      )
+                                    DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                                    DisabledColor: =RGBA(161, 159, 157, 1)
+                                    DisabledFill: =RGBA(242, 242, 241, 0)
+                                    Fill: |-
+                                      =If(
+                                          varStatusFilter = "Pending",
+                                          RGBA(210, 145, 30, 1),
+                                          RGBA(255, 241, 204, 1)
+                                      )
+                                    FillPortions: =1
+                                    Font: =Font.'Segoe UI'
+                                    Height: =36
+                                    HoverBorderColor: =RGBA(0, 0, 0, 0)
+                                    HoverColor: =RGBA(255, 255, 255, 1)
+                                    HoverFill: =RGBA(16, 110, 190, 1)
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    OnSelect: =Set(varStatusFilter, "Pending")
+                                    PaddingBottom: =8
+                                    PaddingLeft: =8
+                                    PaddingTop: =8
+                                    PressedBorderColor: =RGBA(0, 69, 120, 1)
+                                    PressedColor: =RGBA(255, 255, 255, 1)
+                                    PressedFill: =RGBA(16, 110, 190, 1)
+                                    RadiusBottomLeft: =18
+                                    RadiusBottomRight: =18
+                                    RadiusTopLeft: =18
+                                    RadiusTopRight: =18
+                                    Text: ="Pending"
+                              - btnApproved:
+                                  Control: Classic/Button@2.2.0
+                                  Properties:
+                                    BorderColor: =RGBA(0, 0, 0, 0)
+                                    BorderThickness: =1
+                                    Color: |-
+                                      =If(
+                                          varStatusFilter = "Approved",
+                                          RGBA(255, 255, 255, 1),
+                                          RGBA(30, 110, 75, 1)
+                                      )
+                                    DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                                    DisabledColor: =RGBA(161, 159, 157, 1)
+                                    DisabledFill: =RGBA(242, 242, 241, 0)
+                                    Fill: |-
+                                      =If(
+                                          varStatusFilter = "Approved",
+                                          RGBA(55, 150, 105, 1),
+                                          RGBA(220, 244, 232, 1)
+                                      )
+                                    FillPortions: =1
+                                    Font: =Font.'Segoe UI'
+                                    Height: =36
+                                    HoverBorderColor: =RGBA(0, 0, 0, 0)
+                                    HoverColor: =RGBA(255, 255, 255, 1)
+                                    HoverFill: =RGBA(16, 110, 190, 1)
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    OnSelect: =Set(varStatusFilter, "Approved")
+                                    PaddingBottom: =8
+                                    PaddingLeft: =8
+                                    PaddingTop: =8
+                                    PressedBorderColor: =RGBA(0, 69, 120, 1)
+                                    PressedColor: =RGBA(255, 255, 255, 1)
+                                    PressedFill: =RGBA(16, 110, 190, 1)
+                                    RadiusBottomLeft: =18
+                                    RadiusBottomRight: =18
+                                    RadiusTopLeft: =18
+                                    RadiusTopRight: =18
+                                    Text: ="Approved"
+                              - btnRejected:
+                                  Control: Classic/Button@2.2.0
+                                  Properties:
+                                    BorderColor: =RGBA(0, 0, 0, 0)
+                                    BorderThickness: =1
+                                    Color: |-
+                                      =If(
+                                          varStatusFilter = "Rejected",
+                                          RGBA(255, 255, 255, 1),
+                                          RGBA(155, 45, 50, 1)
+                                      )
+                                    DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                                    DisabledColor: =RGBA(161, 159, 157, 1)
+                                    DisabledFill: =RGBA(242, 242, 241, 0)
+                                    Fill: |-
+                                      =If(
+                                          varStatusFilter = "Rejected",
+                                          RGBA(205, 80, 85, 1),
+                                          RGBA(250, 222, 224, 1)
+                                      )
+                                    FillPortions: =1
+                                    Font: =Font.'Segoe UI'
+                                    Height: =36
+                                    HoverBorderColor: =RGBA(0, 0, 0, 0)
+                                    HoverColor: =RGBA(255, 255, 255, 1)
+                                    HoverFill: =RGBA(16, 110, 190, 1)
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    OnSelect: =Set(varStatusFilter, "Rejected")
+                                    PaddingBottom: =8
+                                    PaddingLeft: =8
+                                    PaddingRight: =8
+                                    PaddingTop: =8
+                                    PressedBorderColor: =RGBA(0, 69, 120, 1)
+                                    PressedColor: =RGBA(255, 255, 255, 1)
+                                    PressedFill: =RGBA(16, 110, 190, 1)
+                                    RadiusBottomLeft: =18
+                                    RadiusBottomRight: =18
+                                    RadiusTopLeft: =18
+                                    RadiusTopRight: =18
+                                    Text: ="Rejected"
+                        - galLeaveRequests:
+                            Control: Gallery@2.15.0
+                            Variant: BrowseLayout_Vertical_ThreeTextOneImageVariant_ver5.0
+                            Properties:
+                              BorderColor: =RGBA(245, 245, 245, 1)
+                              Height: =Parent.Height
+                              Items: |-
+                                =Switch(
+                                    varStatusFilter,
+                                    "Approved",
+                                        Filter(
+                                            'Leave Request',
+                                            Status.Value = "Approved"
+                                        ),
+                                    "Rejected",
+                                        Filter(
+                                            'Leave Request',
+                                            Status.Value = "Rejected"
+                                        ),
+                                    "Pending",
+                                        Filter(
+                                            'Leave Request',
+                                            Status.Value = "Pending Manager Approval" ||
+                                            Status.Value = "Pending HR Approval" ||
+                                            Status.Value = "Pending"
+                                        ),
+                                    'Leave Request'
+                                )
+                              LayoutMaxWidth: =Parent.Width
+                              LayoutMinHeight: =0
+                              OnSelect: |-
+                                =Set(
+                                    varSelectedRequest,
+                                    galLeaveRequests.Selected
+                                )
+                              TemplatePadding: =8
+                              TemplateSize: =170
+                              Width: =Parent.Width
+                            Children:
+                              - Rectangle1:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    BorderColor: |-
+                                      =If(
+                                          ThisItem.IsSelected,
+                                          RGBA(0, 120, 212, 1),
+                                          RGBA(210, 210, 210, 1)
+                                      )
+                                    BorderStyle: =BorderStyle.None
+                                    BorderThickness: |-
+                                      =If(
+                                          ThisItem.IsSelected,
+                                          2,
+                                          1
+                                      )
+                                    DisabledFill: =RGBA(0, 108, 191, 1)
+                                    Fill: |-
+                                      =Switch(
+                                          ThisItem.Status.Value,
+                                          "Approved",
+                                              If(
+                                                  ThisItem.IsSelected,
+                                                  RGBA(210, 240, 220, 1),
+                                                  RGBA(235, 250, 240, 1)
+                                              ),
+                                          "Rejected",
+                                              If(
+                                                  ThisItem.IsSelected,
+                                                  RGBA(250, 215, 215, 1),
+                                                  RGBA(255, 240, 240, 1)
+                                              ),
+                                          "Pending Manager Approval",
+                                              If(
+                                                  ThisItem.IsSelected,
+                                                  RGBA(255, 235, 190, 1),
+                                                  RGBA(255, 248, 225, 1)
+                                              ),
+                                          "Pending HR Approval",
+                                              If(
+                                                  ThisItem.IsSelected,
+                                                  RGBA(255, 235, 190, 1),
+                                                  RGBA(255, 248, 225, 1)
+                                              ),
+                                          If(
+                                              ThisItem.IsSelected,
+                                              RGBA(225, 235, 250, 1),
+                                              RGBA(248, 248, 248, 1)
+                                          )
+                                      )
+                                    FocusedBorderThickness: =4
+                                    Height: =Parent.TemplateHeight - 10
+                                    HoverFill: =RGBA(0, 120, 212, 1)
+                                    OnSelect: =Select(Parent)
+                                    PressedFill: =RGBA(0, 120, 212, 1)
+                                    Width: =Parent.TemplateWidth - 10
+                                    X: =5
+                                    Y: =5
+                              - NextArrow13:
+                                  Control: Classic/Icon@2.5.0
+                                  Properties:
+                                    AccessibleLabel: =Self.Tooltip
+                                    BorderColor: =RGBA(0, 0, 0, 0)
+                                    Color: =RGBA(166, 166, 166, 1)
+                                    DisabledBorderColor: =RGBA(245, 245, 245, 1)
+                                    DisabledColor: =RGBA(225, 223, 221, 1)
+                                    DisabledFill: =RGBA(0, 0, 0, 0)
+                                    FocusedBorderThickness: =4
+                                    Height: =50
+                                    HoverBorderColor: =RGBA(0, 0, 0, 0)
+                                    HoverColor: =RGBA(16, 110, 190, 1)
+                                    HoverFill: =RGBA(0, 0, 0, 0)
+                                    Icon: =Icon.ChevronRight
+                                    OnSelect: =Select(Parent)
+                                    PaddingBottom: =16
+                                    PaddingLeft: =16
+                                    PaddingRight: =16
+                                    PaddingTop: =16
+                                    PressedBorderColor: =RGBA(0, 0, 0, 0)
+                                    PressedColor: =RGBA(16, 110, 190, 1)
+                                    PressedFill: =RGBA(0, 0, 0, 0)
+                                    Tooltip: ="View item details"
+                                    Width: =50
+                                    X: =Parent.TemplateWidth - Self.Width - 20
+                                    Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                              - Label1:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    BorderColor: =RGBA(0, 0, 0, 0)
+                                    BorderStyle: =BorderStyle.None
+                                    BorderThickness: =2
+                                    Color: =RGBA(50, 49, 48, 1)
+                                    DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                                    DisabledColor: =RGBA(161, 159, 157, 1)
+                                    FocusedBorderThickness: =4
+                                    Font: =Font.Georgia
+                                    FontWeight: =FontWeight.Semibold
+                                    Height: =28
+                                    OnSelect: =Select(Parent)
+                                    Size: =18
+                                    Text: =ThisItem.Title
+                                    Width: =Parent.TemplateWidth - 60
+                                    X: =20
+                                    Y: =15
+                              - Label2:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    BorderColor: =RGBA(0, 0, 0, 0)
+                                    BorderStyle: =BorderStyle.None
+                                    BorderThickness: =2
+                                    Color: =RGBA(50, 49, 48, 1)
+                                    DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                                    DisabledColor: =RGBA(161, 159, 157, 1)
+                                    FocusedBorderThickness: =4
+                                    Font: =Font.'Segoe UI'
+                                    Height: =24
+                                    OnSelect: =Select(Parent)
+                                    Text: |-
+                                      ="👤 " & ThisItem.Employee.DisplayName
+                                    Width: =Parent.TemplateWidth - 60
+                                    X: =20
+                                    Y: =48
+                              - Label3:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    BorderColor: =RGBA(0, 0, 0, 0)
+                                    BorderStyle: =BorderStyle.None
+                                    BorderThickness: =2
+                                    Color: =RGBA(50, 49, 48, 1)
+                                    DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                                    DisabledColor: =RGBA(161, 159, 157, 1)
+                                    FocusedBorderThickness: =4
+                                    Font: =Font.'Segoe UI'
+                                    Height: =24
+                                    OnSelect: =Select(Parent)
+                                    Text: = ThisItem.'Leave Type'.Value
+                                    Width: =Parent.TemplateWidth - 60
+                                    X: =20
+                                    Y: =76
+                              - Label4:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    BorderColor: =RGBA(0, 0, 0, 0)
+                                    BorderStyle: =BorderStyle.None
+                                    BorderThickness: =2
+                                    Color: =RGBA(50, 49, 48, 1)
+                                    DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                                    DisabledColor: =RGBA(161, 159, 157, 1)
+                                    FocusedBorderThickness: =4
+                                    Font: =Font.'Segoe UI'
+                                    Height: =24
+                                    OnSelect: =Select(Parent)
+                                    Text: |-
+                                      ="📅 " &
+                                      Text(ThisItem.From, "dd mmm yyyy") &
+                                      " - " &
+                                      Text(ThisItem.To, "dd mmm yyyy")
+                                    Width: =Parent.TemplateWidth - 60
+                                    X: =20
+                                    Y: =104
+                              - Label6:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    BorderColor: =RGBA(0, 0, 0, 0)
+                                    BorderStyle: =BorderStyle.None
+                                    BorderThickness: =2
+                                    Color: =RGBA(50, 49, 48, 1)
+                                    DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                                    DisabledColor: =RGBA(161, 159, 157, 1)
+                                    FocusedBorderThickness: =4
+                                    Font: =Font.'Segoe UI'
+                                    Height: =24
+                                    OnSelect: =Select(Parent)
+                                    Text: |-
+                                      =Switch(
+                                          ThisItem.Status.Value,
+                                          "Approved", "🟢 Approved",
+                                          "Rejected", "🔴 Rejected",
+                                          "Pending", "🟡 Pending",
+                                          ThisItem.Status.Value
+                                      )
+                                    Width: =300
+                                    X: =20
+                                    Y: =132
+                  - conRequestDetails:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        BorderColor: =RGBA(220,220,220,1)
+                        BorderThickness: =1
+                        Fill: =RGBA(248,249,250,1)
+                        Height: =Parent.Height
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        PaddingBottom: =8
+                        PaddingLeft: =8
+                        PaddingRight: =8
+                        PaddingTop: =8
+                        RadiusBottomLeft: =8
+                        RadiusBottomRight: =8
+                        RadiusTopLeft: =8
+                        RadiusTopRight: =8
+                        Width: =Parent.Width
+                      Children:
+                        - lblRequestDetailsTitle:
+                            Control: Label@2.5.1
+                            Properties:
+                              Align: =Align.Center
+                              BorderColor: =RGBA(0, 0, 0, 0)
+                              BorderStyle: =BorderStyle.None
+                              BorderThickness: =2
+                              DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                              DisabledColor: =RGBA(161, 159, 157, 1)
+                              FocusedBorderThickness: =4
+                              Font: =Font.Georgia
+                              FontWeight: =FontWeight.Semibold
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Size: =22
+                              Text: ="Request Details"
+                              Width: =250
+                        - lblTitleCaption:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 0, 0, 0)
+                              BorderStyle: =BorderStyle.None
+                              BorderThickness: =2
+                              DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                              DisabledColor: =RGBA(161, 159, 157, 1)
+                              FocusedBorderThickness: =4
+                              Font: =Font.'Segoe UI'
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Text: |-
+                                ="Request Type : " & varSelectedRequest.Title
+                              Width: =350
+                        - lblEmployeeCaption:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 0, 0, 0)
+                              BorderStyle: =BorderStyle.None
+                              BorderThickness: =2
+                              DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                              DisabledColor: =RGBA(161, 159, 157, 1)
+                              FocusedBorderThickness: =4
+                              Font: =Font.'Segoe UI'
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Text: |-
+                                ="Employee Name : " &
+                                varSelectedRequest.Employee.DisplayName
+                              Width: =350
+                        - lblLeaveTypeCaption:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 0, 0, 0)
+                              BorderStyle: =BorderStyle.None
+                              BorderThickness: =2
+                              DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                              DisabledColor: =RGBA(161, 159, 157, 1)
+                              FocusedBorderThickness: =4
+                              Font: =Font.'Segoe UI'
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Text: |-
+                                ="Leave Type : " &
+                                varSelectedRequest.'Leave Type'.Value
+                              Width: =350
+                        - lblFromCaption:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 0, 0, 0)
+                              BorderStyle: =BorderStyle.None
+                              BorderThickness: =2
+                              DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                              DisabledColor: =RGBA(161, 159, 157, 1)
+                              FocusedBorderThickness: =4
+                              Font: =Font.'Segoe UI'
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Text: |-
+                                ="From Date : " &
+                                Text(
+                                    varSelectedRequest.From,
+                                    "dd mmm yyyy"
+                                )
+                              Width: =350
+                        - lblToCaption:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 0, 0, 0)
+                              BorderStyle: =BorderStyle.None
+                              BorderThickness: =2
+                              DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                              DisabledColor: =RGBA(161, 159, 157, 1)
+                              FocusedBorderThickness: =4
+                              Font: =Font.'Segoe UI'
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Text: |-
+                                ="To Date : " &
+                                Text(
+                                    varSelectedRequest.To,
+                                    "dd mmm yyyy"
+                                )
+                              Width: =350
+                        - lblStatusCaption:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 0, 0, 0)
+                              BorderStyle: =BorderStyle.None
+                              BorderThickness: =2
+                              DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                              DisabledColor: =RGBA(161, 159, 157, 1)
+                              FocusedBorderThickness: =4
+                              Font: =Font.'Segoe UI'
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Text: |-
+                                ="Status : " &
+                                Switch(
+                                    varSelectedRequest.Status.Value,
+                                    "Approved","🟢 Approved",
+                                    "Rejected","🔴 Rejected",
+                                    "Pending Manager Approval","🟡 Pending Manager Approval",
+                                    "Pending HR Approval","🟠 Pending HR Approval",
+                                    varSelectedRequest.Status.Value
+                                )
+                              Width: =350
+                        - lblLeaveDaysCaption:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 0, 0, 0)
+                              BorderStyle: =BorderStyle.None
+                              BorderThickness: =2
+                              DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                              DisabledColor: =RGBA(161, 159, 157, 1)
+                              FocusedBorderThickness: =4
+                              Font: =Font.'Segoe UI'
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Text: |-
+                                ="Leave Days : " &
+                                Text(varSelectedRequest.LeaveDays)
+                              Width: =350
+                        - lblManagerCaption:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 0, 0, 0)
+                              BorderStyle: =BorderStyle.None
+                              BorderThickness: =2
+                              DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                              DisabledColor: =RGBA(161, 159, 157, 1)
+                              FocusedBorderThickness: =4
+                              Font: =Font.'Segoe UI'
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Text: |-
+                                ="Manager : " &
+                                varSelectedRequest.Manager.DisplayName
+                              Width: =350
+                        - lblHRCaption:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 0, 0, 0)
+                              BorderStyle: =BorderStyle.None
+                              BorderThickness: =2
+                              DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                              DisabledColor: =RGBA(161, 159, 157, 1)
+                              FocusedBorderThickness: =4
+                              Font: =Font.'Segoe UI'
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Text: |-
+                                ="HR : " &
+                                varSelectedRequest.HR.DisplayName
+                              Width: =350
+                        - lblDescriptionCaption:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 0, 0, 0)
+                              BorderStyle: =BorderStyle.None
+                              BorderThickness: =2
+                              DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                              DisabledColor: =RGBA(161, 159, 157, 1)
+                              FocusedBorderThickness: =4
+                              Font: =Font.'Segoe UI'
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Text: |-
+                                ="Description : " &
+                                varSelectedRequest.Detail
+                              Width: =350

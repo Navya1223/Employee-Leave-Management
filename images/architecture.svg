@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="330" viewBox="0 0 900 330" role="img" aria-label="Architecture: employee uses the Power Apps canvas app, which reads and writes the SharePoint list Leave Request">
+  <style>
+    text{font-family:'Segoe UI',Helvetica,Arial,sans-serif;fill:#323130}
+    .h{font-size:17px;font-weight:600}
+    .s{font-size:13px;fill:#605e5c}
+    .box{fill:#fff;stroke:#c8c6c4;stroke-width:1.5}
+    .arrow{stroke:#2e81ab;stroke-width:2.5;fill:none;marker-end:url(#a)}
+    .lbl{font-size:12px;fill:#2e81ab}
+  </style>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2e81ab"/></marker></defs>
+  <rect width="900" height="330" fill="#f3f5f7" rx="14"/>
+
+  <rect class="box" x="30" y="105" width="170" height="120" rx="12"/>
+  <text class="h" x="115" y="145" text-anchor="middle">👤 Employee</text>
+  <text class="s" x="115" y="172" text-anchor="middle">Browser, Teams</text>
+  <text class="s" x="115" y="192" text-anchor="middle">or mobile</text>
+
+  <rect x="265" y="40" width="330" height="250" rx="12" fill="#fff" stroke="#742774" stroke-width="2"/>
+  <rect x="265" y="40" width="330" height="40" rx="12" fill="#742774"/>
+  <rect x="265" y="64" width="330" height="16" fill="#742774"/>
+  <text x="430" y="66" text-anchor="middle" style="font-size:16px;font-weight:600;fill:#fff">Power Apps canvas app</text>
+  <rect class="box" x="290" y="98" width="280" height="80" rx="8"/>
+  <text class="h" x="305" y="122">HomeScreen</text>
+  <text class="s" x="305" y="144">Status filters · request gallery</text>
+  <text class="s" x="305" y="164">Request details panel</text>
+  <rect class="box" x="290" y="192" width="280" height="80" rx="8"/>
+  <text class="h" x="305" y="216">NewRequestScreen</text>
+  <text class="s" x="305" y="238">Edit form (SubmitForm)</text>
+  <text class="s" x="305" y="258">Success / error notifications</text>
+
+  <rect x="660" y="80" width="210" height="170" rx="12" fill="#fff" stroke="#0078d4" stroke-width="2"/>
+  <text class="h" x="765" y="112" text-anchor="middle">SharePoint list</text>
+  <text x="765" y="134" text-anchor="middle" style="font-size:14px;fill:#0078d4;font-weight:600">"Leave Request"</text>
+  <text class="s" x="680" y="160">Title · Employee</text>
+  <text class="s" x="680" y="180">Manager · HR · Leave Type</text>
+  <text class="s" x="680" y="200">From · To · Status</text>
+  <text class="s" x="680" y="220">Leave Days · Detail</text>
+
+  <path class="arrow" d="M200 165 H262"/>
+  <path class="arrow" d="M597 140 H657"/>
+  <path class="arrow" d="M657 200 H597" style="marker-end:url(#a)"/>
+  <text class="lbl" x="627" y="130" text-anchor="middle">write</text>
+  <text class="lbl" x="627" y="218" text-anchor="middle">read</text>
+</svg>
