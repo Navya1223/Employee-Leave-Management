@@ -4,7 +4,7 @@ A Microsoft Power Apps canvas app where employees submit leave requests and foll
 
 ![Power Apps](https://img.shields.io/badge/Power_Apps-Canvas_app-742774?style=flat-square) ![Power Fx](https://img.shields.io/badge/Power_Fx-formulas-742774?style=flat-square) ![SharePoint](https://img.shields.io/badge/SharePoint-list-0078D4?style=flat-square)
 
-### ▶️ [Try the live web demo](https://navya1223.github.io/power-apps-leave-management/)
+### ▶️ [Try the live web demo](https://navya1223.github.io/Employee-Leave-Management/)
 
 Power Apps needs a Microsoft 365 licence to run, so this repository also includes a **web version of the app** that recreates its screens and logic in plain HTML and JavaScript. It runs in any browser with sample data, so you can click through it without a Microsoft account.
 
@@ -125,7 +125,7 @@ The readable source of every screen (Power Fx in YAML) is in [`power-apps/source
 ## Repository structure
 
 ```
-power-apps-leave-management/
+Employee-Leave-Management/
 ├── index.html                         # Web demo (GitHub Pages)
 ├── images/                            # Screenshots and architecture diagram
 └── power-apps/
